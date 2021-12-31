@@ -2,7 +2,7 @@ import React from 'react'
 import { useGlobalContext } from '../context'
 import Loading from './Loading';
 const News = () => {
-    const { loading, news } = useGlobalContext();
+    const { loading, news, removeSingleNews } = useGlobalContext();
     if (loading) {
         return <Loading />
     }
@@ -20,7 +20,7 @@ const News = () => {
                         </p>
                         <div>
                             <a href={url} className='read-link' target='_blank' rel='noopener noreferrer'>read more</a>
-                            <button className='remove-btn'>remove</button>
+                            <button onClick={() => removeSingleNews(objectID)} className='remove-btn'>remove</button>
                         </div>
                     </article>
                 )

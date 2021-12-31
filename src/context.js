@@ -29,8 +29,14 @@ const AppProvider = ({ children }) => {
 
     }, [])
 
+    /// *** REMOVE SINGLE NEWS  *** ///
+    const removeSingleNews = (id) => {
+        dispatch({ type: 'REMOVE_SINGLE_NEWS', payload: { id } })
+    }
+
     return <AppContext.Provider value={{
         ...state,
+        removeSingleNews
     }}>
         {children}
     </AppContext.Provider>
