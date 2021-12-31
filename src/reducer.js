@@ -10,6 +10,11 @@ const reducer = (state, action) => {
         let tempArr = state.news.filter(item => item.objectID !== action.payload.id)
         return { ...state, news: tempArr }
     }
+    if (action.type === 'CHANGE_SEARCH_TERM') {
+        //dont forget to reset page to 0
+        console.log(action.payload)
+        return { ...state, searchTerm: action.payload, page: 0 }
+    }
     return state
 }
 export default reducer
