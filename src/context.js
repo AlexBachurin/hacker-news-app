@@ -23,12 +23,12 @@ const AppProvider = ({ children }) => {
         console.log(data);
         dispatch({ type: 'SET_NEWS', payload: { hits: data.hits, nbPages: data.nbPages } })
     }
-    //fetch every time search term changes
+    //fetch every time search term changes or page changes
     useEffect(() => {
         const url = `http://hn.algolia.com/api/v1/search?query=${state.searchTerm}&page=${state.page}`
         fetchNews(url);
 
-    }, [state.searchTerm])
+    }, [state.searchTerm, state.page])
 
     /// *** REMOVE SINGLE NEWS  *** ///
     const removeSingleNews = (id) => {
@@ -38,11 +38,16 @@ const AppProvider = ({ children }) => {
     const handleChange = (value) => {
         dispatch({ type: 'CHANGE_SEARCH_TERM', payload: value })
     }
+    //**  PREV AND NEXT PAGE **/
+    const changePage = (type) => {
+        dispatch({ type: 'CHANGE_PAGE', payload: type })
+    }
 
     return <AppContext.Provider value={{
         ...state,
         removeSingleNews,
-        handleChange
+        handleChange,
+        changePage
     }}>
         {children}
     </AppContext.Provider>

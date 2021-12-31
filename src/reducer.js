@@ -15,6 +15,23 @@ const reducer = (state, action) => {
         console.log(action.payload)
         return { ...state, searchTerm: action.payload, page: 0 }
     }
+    if (action.type === 'CHANGE_PAGE') {
+        if (action.payload === 'prev') {
+            let tempPage = state.page - 1;
+            //check if we go out of bounds
+            if (tempPage < 0) {
+                tempPage = state.pages - 1;
+            }
+            return { ...state, page: tempPage }
+        }
+        if (action.payload === 'next') {
+            let tempPage = state.page + 1;
+            if (tempPage > state.pages - 1) {
+                tempPage = 0;
+            }
+            return { ...state, page: tempPage }
+        }
+    }
     return state
 }
 export default reducer

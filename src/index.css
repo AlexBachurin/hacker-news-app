@@ -8,6 +8,10 @@
   --clr-main: #66c3e6;
   --clr-main-bg: #1e2022;
   --clr-items-bg: #181a1b;
+  --clr-text: #e8e6e3;
+  --clr-btn-bg: #13629b;
+  --radius: 0.25rem;
+  --spacing: 0.1rem;
 }
 /*
 =============== 
@@ -245,9 +249,9 @@ Buttons
   text-transform: capitalize;
   font-weight: bold;
   border-color: transparent;
-  background: var(--clr-primary-5);
+  background: var(--clr-btn-bg);
   border-radius: var(--radius);
-  color: var(--clr-white);
+  color: var(--clr-text);
   letter-spacing: var(--spacing);
   cursor: pointer;
 }
