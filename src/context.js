@@ -25,7 +25,7 @@ const AppProvider = ({ children }) => {
     }
     //fetch every time search term changes or page changes
     useEffect(() => {
-        const url = `http://hn.algolia.com/api/v1/search?query=${state.searchTerm}&page=${state.page}`
+        const url = `https://hn.algolia.com/api/v1/search?query=${state.searchTerm}&page=${state.page}`
         fetchNews(url);
 
     }, [state.searchTerm, state.page])
